@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETF 市價、淨值與折溢價｜教學簡報</title>
+<style>
+  :root{color-scheme:light;--cream:#fdfbf6;--milk:#f3e8d9;--ink:#352820;--coffee:#754c35;--muted:#665347}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font:1rem/1.65 system-ui,"PingFang TC","Microsoft JhengHei",sans-serif}
+  main{width:min(68rem,100% - 2.5rem);margin:clamp(1.75rem,7vw,5rem) auto 2rem}
+  h1{font-size:clamp(1.55rem,4.8vw,3.25rem);line-height:1.2;margin:0 0 1.4rem}
+  h2{font-size:clamp(1.12rem,3vw,1.65rem);margin:.5rem 0}
+  .intro,.context{color:var(--muted)}
+  .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 3rem;margin-block:1.5rem}
+  .pair p{margin:.35rem 0}
+  .rule div{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1rem;padding:.6rem 0;border-bottom:1px solid #e1d2c0}
+  .rule dd{margin:0;color:var(--coffee);font-weight:700}
+  .formula{background:var(--milk);padding:1rem 1.25rem;margin:1.4rem 0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;font-size:clamp(1rem,2.6vw,1.4rem)}
+  .amount,.result{font-size:clamp(1.4rem,4vw,2.25rem);font-weight:750;color:var(--coffee)}
+  .source{margin-top:1.6rem;font-size:.9rem}
+  a{color:var(--coffee)}
+  nav{display:flex;gap:1rem;align-items:center;justify-content:space-between;border-top:1px solid #e1d2c0;margin-top:1.7rem;padding-top:1rem;flex-wrap:wrap}
+  button{font:inherit;padding:.55rem .85rem;color:var(--cream);background:var(--coffee);border:1px solid var(--coffee);border-radius:.35rem;cursor:pointer}
+  button:disabled{cursor:default;background:var(--milk);color:var(--muted);border-color:transparent}
+  :focus-visible{outline:2px solid var(--coffee);outline-offset:4px}
+  @media(max-width:35rem){.pair{grid-template-columns:1fr;gap:.65rem}.rule div{gap:.6rem}}
+  @media print{[hidden]{display:block!important}section{break-after:page}section:last-of-type{break-after:auto}nav{display:none}}
+</style>
+</head>
+<body>
+<main aria-label="ETF 市價、淨值與折溢價教學簡報">
+  <section id="slide-1" aria-labelledby="title-1">
+    <h1 id="title-1" tabindex="-1">ETF 的市價與每單位淨值</h1>
+    <p class="intro">同一檔 ETF，為什麼會看到兩個數字？</p>
+    <div class="pair">
+      <div><h2>市價</h2><p>ETF 在市場上的成交價格。</p></div>
+      <div><h2>每單位淨值 <span lang="en">(NAV per unit)</span></h2><p>基金的淨資產除以流通在外的基金單位數。</p></div>
+    </div>
+    <p class="source">資料來源　<a href="https://accessibility.twse.com.tw/zh/products/securities/etf/overview/introduction.html">臺灣證券交易所 ETF 總覽</a></p>
+  </section>
+
+  <section id="slide-2" aria-labelledby="title-2">
+    <h1 id="title-2" tabindex="-1">折價與溢價怎麼判斷？</h1>
+    <dl class="rule">
+      <div><dt>市價高於每單位淨值</dt><dd>溢價</dd></div>
+      <div><dt>市價等於每單位淨值</dt><dd>折溢價率為 0%</dd></div>
+      <div><dt>市價低於每單位淨值</dt><dd>折價</dd></div>
+    </dl>
+    <p class="formula">折溢價率＝（市價 − 每單位淨值）÷ <strong>每單位淨值</strong> × 100%</p>
+    <p class="source">資料來源　<a href="https://academy.twse.com.tw/article/8a8221129e208e80019e77ef37bb0007">臺灣證券交易所證好學〈ETF 折溢價〉</a></p>
+  </section>
+
+  <section id="slide-3" aria-labelledby="title-3">
+    <h1 id="title-3" tabindex="-1">用假設的 ETF A 算一次</h1>
+    <p class="context">假設範例。同一比較時點，金額為每單位新台幣。</p>
+    <div class="pair">
+      <div><p>市價</p><p class="amount">20.50 元</p></div>
+      <div><p>每單位淨值</p><p class="amount">20.00 元</p></div>
+    </div>
+    <p class="formula">（20.50 − 20.00）÷ 20.00 × 100% ＝ 2.5%</p>
+    <p><strong class="result">溢價 2.5%</strong>　市價比每單位淨值高 2.5%。</p>
+    <p>比較時留意資料時間，以及淨值是否為盤中估計值。</p>
+    <p class="source">資料來源　<a href="https://koyu-ch.github.io/Wiki/web/price-nav.html">ETF Wiki 教學文章</a>、<a href="https://academy.twse.com.tw/article/8a8221129e208e80019e77ef37bb0007">臺灣證券交易所證好學〈ETF 折溢價〉</a></p>
+  </section>
+  <nav aria-label="簡報翻頁" hidden>
+    <button type="button" id="previous">上一頁</button>
+    <span id="page-number" aria-live="polite"></span>
+    <button type="button" id="next">下一頁</button>
+  </nav>
+</main>
+<script>
+  const slides = [...document.querySelectorAll('main > section')];
+  const navigation = document.querySelector('nav');
+  const previous = document.querySelector('#previous');
+  const next = document.querySelector('#next');
+  const pageNumber = document.querySelector('#page-number');
+  let page = 0;
+  function show(index, focusTitle = false) {
+    if (index < 0 || index >= slides.length) return;
+    page = index;
+    slides.forEach((slide, number) => { slide.hidden = number !== page; });
+    previous.disabled = page === 0;
+    next.disabled = page === slides.length - 1;
+    pageNumber.textContent = `第 ${page + 1} 頁，共 ${slides.length} 頁`;
+    if (focusTitle) slides[page].querySelector('h1').focus();
+  }
+  previous.addEventListener('click', () => show(page - 1, true));
+  next.addEventListener('click', () => show(page + 1, true));
+  document.addEventListener('keydown', (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    show(page + (event.key === 'ArrowLeft' ? -1 : 1), true);
+  });
+  navigation.hidden = false;
+  show(0);
+</script>
+</body>
+</html>
