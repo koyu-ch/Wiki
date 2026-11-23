@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="認識 ETF 市價與每單位淨值，用假設數字計算折溢價率。">
+  <title>市價、淨值與折溢價｜ETF 投資入門</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">ETF <span>投資入門</span></a>
+      <nav aria-label="主導覽">
+        <a href="index.html#learning">學習路線</a>
+        <a href="price-nav.html" aria-current="page">示範文章</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="reading-width">
+          <p class="article-position"><a href="index.html#learning">學習路線</a><span aria-hidden="true"> / </span>主題 03</p>
+          <h1>市價、淨值與折溢價</h1>
+          <p>同一檔 ETF 為什麼會有兩個價格？把市價和每單位淨值放在一起，就能看出折價或溢價。</p>
+        </div>
+      </header>
+      <div class="reading-width article-content">
+        <section aria-labelledby="definitions">
+          <h2 id="definitions">市價與每單位淨值</h2>
+          <dl class="definitions">
+            <dt>市價</dt>
+            <dd>ETF 在市場上的成交價格。</dd>
+            <dt>每單位淨值 <span lang="en">(NAV per unit)</span></dt>
+            <dd>基金的淨資產除以流通在外的基金單位數。</dd>
+          </dl>
+        </section>
+        <section aria-labelledby="formula-title">
+          <h2 id="formula-title">折溢價率怎麼算？</h2>
+          <p>市價高於每單位淨值是<strong>溢價</strong>，低於每單位淨值是<strong>折價</strong>。</p>
+          <div class="formula">
+            <strong>折溢價率</strong>
+            <span>（市價 − 每單位淨值）÷ 每單位淨值 × 100%</span>
+          </div>
+          <p class="reading-note">盤中查到的淨值可能是估計值。比較時，要留意兩筆資料的時間和淨值類型。</p>
+        </section>
+        <section class="worked-example" aria-labelledby="example">
+          <h2 id="example">假設範例</h2>
+          <p>假設同一時點，ETF A 的市價是每單位 20.50 元，淨值是每單位 20.00 元。</p>
+          <p class="calculation">（20.50 − 20.00）÷ 20.00 × 100% <strong>= 2.5%</strong></p>
+          <p>以每單位淨值為基準，ETF A 的市價高出 2.5%，因此是<strong>溢價 2.5%</strong>。</p>
+        </section>
+        <section class="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">來源與延伸閱讀</h2>
+          <ul>
+            <li><a href="../wiki/price-nav.md">ETF Wiki 原文</a></li>
+            <li><a href="../raw/twse-etf-overview.md">臺灣證券交易所｜ETF 總覽</a></li>
+            <li><a href="../raw/twse-premium-discount.md">臺灣證券交易所證好學｜ETF 折溢價</a></li>
+            <li><a href="../slides/ETF-price-nav.pptx">下載一頁重點投影片</a></li>
+          </ul>
+        </section>
+        <a class="action secondary" href="index.html#learning">回到學習路線</a>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="reading-width"><span>ETF 投資入門</span><a href="../wiki/index.md">Wiki 原始索引</a></div>
+  </footer>
+</body>
+</html>
